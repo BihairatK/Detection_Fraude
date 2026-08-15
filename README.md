@@ -83,7 +83,7 @@ XGBoost est retenu pour sa meilleure PR-AUC (métrique la plus pertinente compte
 - Prochaines étapes envisagées : calibration des probabilités et extension à une analyse de réseau (relations professionnel ↔ patient) pour détecter des schémas de fraude organisée.
 
 
-## Exemple de scoring d'un client
+## Exemple de scoring de 2 clients ayant 2 profils de risque différents
 
 <table>
   <tr>
