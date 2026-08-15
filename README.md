@@ -1,6 +1,6 @@
 # Détection et scoring de fraude en Assurance santé
 
-Ce projet construit un système de détection et de priorisation de la fraude aux demandes de remboursement en assurance santé : **apprentissage supervisé**, **détection d'anomalies**, **explicabilité**, **scoring** (de 0–100) et **évaluation économique**.
+Ce projet construit un système de détection et de priorisation de la fraude aux demandes de remboursement en assurance santé : **apprentissage supervisé**, **détection d'anomalies**, **explicabilité**, **scoring** (de 0 à 100) et **évaluation économique**.
 
 ## Résultats clés
 
