@@ -11,7 +11,6 @@ Ce projet construit un système de détection et de priorisation de la fraude au
 | Segment « Risque élevé » | 10 % des dossiers, **54,2 %** de fraude réelle (vs 8 % en moyenne) |
 | Gain net estimé (test) | 133 367 *(sous hypothèses de coût — voir §7)* |
 
-*(images à insérer ici : segmentation des risques, importance des variables SHAP, impact économique — voir suggestions en fin de document)*
 
 ## Problème métier
 
