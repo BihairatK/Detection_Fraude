@@ -9,7 +9,7 @@ Ce projet construit un système de détection et de priorisation de la fraude au
 | Modèle retenu | XGBoost (PR-AUC = 0,736) |
 | Recall au seuil optimal | 92,3 % des fraudes détectées |
 | Segment « Risque élevé » | 10 % des dossiers, **54,2 %** de fraude réelle (vs 8 % en moyenne) |
-| Gain net estimé (test) | 133 367 *(sous hypothèses de coût — voir §7)* |
+| Gain net estimé (test) | 133 367 *(sous hypothèses de coût, voir §7)* |
 
 
 ## Problème métier
