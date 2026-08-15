@@ -61,8 +61,11 @@ XGBoost est retenu pour sa meilleure PR-AUC (métrique la plus pertinente compte
 - **Un délai de facturation court est un signal de fraude**, à l'inverse de l'intuition qu'on aurait en assurance auto (où une déclaration tardive est suspecte). Chaque jeu de données a sa propre logique comportementale ; les hypothèses ne se transposent pas d'un contexte à l'autre.
 - **Le seuil optimal de coût (0,01) est très éloigné de 0,5.** Avec un coût de fraude non détectée (991) très supérieur au coût d'investigation (90), le seuil optimal fait chuter le coût total de 70 532 à 42 765 (-39,4 %). Un seuil fixé par défaut à 0,5 serait donc nettement sous-optimal ici.
 - **La segmentation opérationnelle concentre efficacement le risque** : le segment « Risque élevé » (~10 % des dossiers test) affiche un taux de fraude réel de **54,2 %**, contre 1,0 % pour le segment « Faible risque ».
+<p align="center"><img src="segmentation_risques.png" width="800" alt="Segmentation des risques"></p>
+
 - **La détection d'anomalies apporte un signal complémentaire** : le taux de fraude atteint 24,7 % parmi les 10 % de dossiers jugés les plus atypiques par l'Isolation Forest, contre 7,8 % en moyenne, y compris pour des profils ne ressemblant pas exactement aux fraudes historiques.
-- **Impact économique** : sur l'échantillon test, 179 fraudes détectées, 15 non détectées, 310 faux positifs (Recall 92,3 %, précision des dossiers investigués 36,6 %) ; fraude potentiellement évitée estimée à 177 377, pour un coût d'investigation de 44 010, soit un **gain net estimé de 133 367 sous les hypothèses de coût retenues** (à ne pas présenter comme un gain garanti).
+- **Impact économique** : sur l'échantillon test, 179 fraudes détectées, 15 non détectées, 310 faux positifs (Recall 92,3 %, précision des dossiers investigués 36,6 %) ; fraude potentiellement évitée estimée à 177 377, pour un coût d'investigation de 44 010, soit un **gain net estimé de 133 367 sous les hypothèses de coût retenues** (il ne s'agit pas d'un gain garanti).
+<p align="center"><img src="impact_economique_fraude.png" width="800" alt="Impact Economique"></p>
 
 ## Recommandations
 
@@ -70,7 +73,7 @@ XGBoost est retenu pour sa meilleure PR-AUC (métrique la plus pertinente compte
 2. **Adopter un scoring continu plutôt qu'une décision binaire**, pour adapter le niveau de contrôle (traitement automatique / contrôle léger / investigation) au niveau de risque.
 3. **Combiner modèle supervisé et détection d'anomalies** : le premier capture les schémas de fraude déjà connus, le second repère les comportements atypiques inédits, les deux sont complémentaires, pas substituables.
 4. **Traiter le modèle comme un outil d'aide à la décision**, jamais comme un système de blocage automatique : les équipes métier restent décisionnaires, en s'appuyant sur les facteurs explicatifs fournis par SHAP.
-5. **Recalibrer les hypothèses de coût avec des données réelles** (coût moyen d'une fraude non détectée, coût d'une investigation) avant tout déploiement — le seuil optimal et le gain économique en dépendent directement.
+5. **Recalibrer les hypothèses de coût avec des données réelles** (coût moyen d'une fraude non détectée, coût d'une investigation) avant tout déploiement, le seuil optimal et le gain économique en dépendent directement.
 6. **Mettre en place un suivi dans le temps** (dérive des données, évolution du taux de fraude, stabilité de la PR-AUC et du Recall) : les comportements frauduleux évoluent, un modèle figé perd en pertinence.
 
 ## Limites et prochaines étapes
@@ -78,28 +81,11 @@ XGBoost est retenu pour sa meilleure PR-AUC (métrique la plus pertinente compte
 - Les hypothèses de coût (991 / 90) sont des estimations à remplacer par des données réelles de l'assureur.
 - Le taux de fraude historique d'un professionnel peut être peu fiable en cas de faible volume d'observations.
 - Les explications SHAP identifient des associations, pas des relations causales.
-- Prochaines étapes envisagées : calibration des probabilités, monitoring du drift en production, extension à une analyse de réseau (relations professionnel ↔ patient) pour détecter des schémas de fraude organisée, et exposition du scoring via une application (Streamlit).
+- Prochaines étapes envisagées : calibration des probabilités et extension à une analyse de réseau (relations professionnel ↔ patient) pour détecter des schémas de fraude organisée.
 
 
----
-
-### 💡 Suggestions d'images à insérer dans ce README
-
-1. **Segmentation des risques** (§4/§5 du notebook) — le graphique le plus parlant : montre en un coup d'œil que le système concentre la fraude dans un segment restreint.
-2. **Importance des variables (SHAP, summary plot)** — démontre la démarche d'explicabilité, essentielle en contexte assurantiel.
-3. **Impact économique** — un visuel synthétique (fraudes détectées / manquées, coût investigations, gain net) plutôt qu'une capture de cellule Python.
-
-*(Optionnel : une 4e image avec l'exemple de scoring d'un nouveau dossier, si le projet évolue vers une démo applicative.)*
+## Exemple de scoring d'un client
+<p align="center"><img src="segmentation_risques.png" width="800" alt="Diagnistic Client"></p>
 
 
 
-
-
-
-
-
-
-
-
-
-<p align="center"><img src="fig_qqplots.png" width="800" alt="QQ-plots Gamma, Lognormale, Weibull"></p>
