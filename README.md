@@ -84,7 +84,25 @@ XGBoost est retenu pour sa meilleure PR-AUC (métrique la plus pertinente compte
 
 
 ## Exemple de scoring d'un client
-<p align="center"><img src="segmentation_risques.png" width="800" alt="Diagnistic Client"></p>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="dossier_P0210_20260815_213635_270955.png"
+           width="450"
+           alt="Fraud Score - Client non risqué">
+      <br>
+      <strong>🟢 Client à faible risque</strong>
+    </td>
+    <td align="center">
+      <img src="dossier_P0223_20260815_213634_438695.png"
+           width="450"
+           alt="Fraud Score - Client à risque">
+      <br>
+      <strong>🔴 Client à risque élevé</strong>
+    </td>
+  </tr>
+</table>
 
 
 
