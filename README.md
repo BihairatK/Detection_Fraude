@@ -66,24 +66,7 @@ XGBoost est retenu pour sa meilleure PR-AUC (métrique la plus pertinente compte
 - **Impact économique** : sur l'échantillon test, 179 fraudes détectées, 15 non détectées, 310 faux positifs (Recall 92,3 %, précision des dossiers investigués 36,6 %) ; fraude potentiellement évitée estimée à 177 377, pour un coût d'investigation de 44 010, soit un **gain net estimé de 133 367 sous les hypothèses de coût retenues** (il ne s'agit pas d'un gain garanti).
 <p align="center"><img src="impact_economique_fraude.png" width="800" alt="Impact Economique"></p>
 
-## Recommandations
-
-1. **Prioriser les investigations sur le segment « Risque élevé »**, où le taux de fraude réel (54,2 %) est 7 fois supérieur à la moyenne.
-2. **Adopter un scoring continu plutôt qu'une décision binaire**, pour adapter le niveau de contrôle (traitement automatique / contrôle léger / investigation) au niveau de risque.
-3. **Combiner modèle supervisé et détection d'anomalies** : le premier capture les schémas de fraude déjà connus, le second repère les comportements atypiques inédits, les deux sont complémentaires, pas substituables.
-4. **Traiter le modèle comme un outil d'aide à la décision**, jamais comme un système de blocage automatique : les équipes métier restent décisionnaires, en s'appuyant sur les facteurs explicatifs fournis par SHAP.
-5. **Recalibrer les hypothèses de coût avec des données réelles** (coût moyen d'une fraude non détectée, coût d'une investigation) avant tout déploiement, le seuil optimal et le gain économique en dépendent directement.
-6. **Mettre en place un suivi dans le temps** (dérive des données, évolution du taux de fraude, stabilité de la PR-AUC et du Recall) : les comportements frauduleux évoluent, un modèle figé perd en pertinence.
-
-## Limites et prochaines étapes
-
-- Les hypothèses de coût (991 / 90) sont des estimations à remplacer par des données réelles de l'assureur.
-- Le taux de fraude historique d'un professionnel peut être peu fiable en cas de faible volume d'observations.
-- Les explications SHAP identifient des associations, pas des relations causales.
-- Prochaines étapes envisagées : calibration des probabilités et extension à une analyse de réseau (relations professionnel ↔ patient) pour détecter des schémas de fraude organisée.
-
-
-## Exemple de scoring de 2 clients ayant 2 profils de risque différents
+## Exemple de Scoring de 2 clients ayant 2 profils de risque différents
 
 <table>
   <tr>
@@ -104,5 +87,20 @@ XGBoost est retenu pour sa meilleure PR-AUC (métrique la plus pertinente compte
   </tr>
 </table>
 
+## Recommandations
+
+1. **Prioriser les investigations sur le segment « Risque élevé »**, où le taux de fraude réel (54,2 %) est 7 fois supérieur à la moyenne.
+2. **Adopter un scoring continu plutôt qu'une décision binaire**, pour adapter le niveau de contrôle (traitement automatique / contrôle léger / investigation) au niveau de risque.
+3. **Combiner modèle supervisé et détection d'anomalies** : le premier capture les schémas de fraude déjà connus, le second repère les comportements atypiques inédits, les deux sont complémentaires.
+4. **Traiter le modèle comme un outil d'aide à la décision**, jamais comme un système de blocage automatique : les équipes métier restent décisionnaires, en s'appuyant sur les facteurs explicatifs fournis par SHAP.
+5. **Recalibrer les hypothèses de coût avec des données réelles** (coût moyen d'une fraude non détectée, coût d'une investigation) avant tout déploiement, le seuil optimal et le gain économique en dépendent directement.
+6. **Mettre en place un suivi dans le temps** (dérive des données, évolution du taux de fraude, stabilité de la PR-AUC et du Recall) : les comportements frauduleux évoluent, un modèle figé perd en pertinence.
+
+## Limites et prochaines étapes
+
+- Les hypothèses de coût (991 / 90) sont des estimations à remplacer par des données réelles de l'assureur.
+- Le taux de fraude historique d'un professionnel peut être peu fiable en cas de faible volume d'observations.
+- Les explications SHAP identifient des associations, pas des relations causales.
+- Prochaines étapes envisagées : calibration des probabilités et extension à une analyse de réseau (relations professionnel ↔ patient) pour détecter des schémas de fraude organisée.
 
 
